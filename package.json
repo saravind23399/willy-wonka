@@ -1,0 +1,23 @@
+{
+  "name": "willy-wonka",
+  "version": "0.1.0",
+  "description": "Gitlab - Slack integration for the morning!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saravind23399/willy-wonka.git"
+  },
+  "author": "@saravind23300",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/saravind23399/willy-wonka/issues"
+  },
+  "homepage": "https://github.com/saravind23399/willy-wonka#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1"
+  }
+}
