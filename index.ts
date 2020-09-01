@@ -8,13 +8,22 @@ dotenv.config(
 );
 
 import GitlabCommunicator from './axios/gitlab'
+import { Project } from './types';
+import SlackCommunicator from './axios/slack';
 
 const app = express()
 const port = process.env.PORT || 3000
-app.get('/', (req: Request, res: Response) => {
-  GitlabCommunicator.get('/projects').then((response) => {
-    res.send(response.data)
-  })
+app.get('/', async (req: Request, res: Response) => {
+  try {
+    const encodedProjectString = encodeURIComponent(process.env.GITLAB_PROJECT_URL || '')
+    const { data: project } = await GitlabCommunicator.get<Project>(`/projects/${encodedProjectString}`)
+    const slack = await SlackCommunicator.post('', {
+      text: 'Hello World!'
+    })
+    res.send('Success')
+  } catch (error) {
+    res.status(500).send(error)
+  }
 })
 
 app.listen(port)
